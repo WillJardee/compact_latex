@@ -1,5 +1,5 @@
-# compact_latex
-Collection of sty, cls, tex, and bib examples.
+# Compact Latex
+Collection of starter sty, cls, tex, and bib examples.
 
 ## Adding to MikTex
 Most of these styles should be usable out of the box. The TEXMF root directory
