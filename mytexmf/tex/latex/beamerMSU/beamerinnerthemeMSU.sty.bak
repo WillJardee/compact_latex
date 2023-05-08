@@ -1,0 +1,86 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Montana State University, NISL Template    %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% created by Patrick Donnelly, 2012-2015     %
+% patrick.donnelly2@cs.montana.edu           %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\mode<presentation>
+
+% Bullet shape.
+\DeclareOptionBeamer{bullet}{\def\beamer@fancy@bullet{#1}}
+\ExecuteOptionsBeamer{bullet=circle}
+\ProcessOptionsBeamer
+
+% Spacing
+\setbeamertemplate{title page}[default][colsep=-4bp,rounded=true,shadow=true]
+\setbeamertemplate{part page}[default][colsep=-4bp,rounded=true,shadow=true]
+
+% Blocks
+%\setbeamerfont{block title}{size=\Large, series=\bfseries}
+\setbeamertemplate{blocks}[rounded][shadow=\beamer@themerounded@shadow]
+
+% Items.
+\setbeamertemplate{items}[circle]
+\defbeamertemplate{itemize item}{squarealt}%
+{\tiny\raise.5ex\hbox{\donotcoloroutermaths$\blacksquare$}}
+\defbeamertemplate{itemize subitem}{squarealt}%
+{\tiny\raise.4ex\hbox{\donotcoloroutermaths$\square$}}
+\defbeamertemplate{itemize subsubitem}{squarealt}%
+{\tiny\raise.3ex\hbox{\donotcoloroutermaths$\blacksquare$}}
+\defbeamertemplate{itemize item}{circlealt}%
+{\small\raise.2ex\hbox{\donotcoloroutermaths$\bullet$}}
+\defbeamertemplate{itemize subitem}{circlealt}%
+{\small\raise.1ex\hbox{\donotcoloroutermaths$\circ$}}
+\defbeamertemplate{itemize subsubitem}{circlealt}%
+{\scriptsize\raise.1ex\hbox{\donotcoloroutermaths$\bullet$}}
+\def\circletext{circle}
+\ifx\beamer@fancy@bullet\circletext
+  \setbeamertemplate{items}[circlealt]
+\else
+  \setbeamertemplate{items}[squarealt]
+\fi
+
+
+% Background images
+\setbeamertemplate{background}
+{
+    \ifnum\c@framenumber=1%
+		\begin{tikzpicture}
+			\node[at=(current page.north west),anchor=north west,inner sep=0pt] {
+				\includegraphics[width=1.0\paperwidth]{MSUheader.png}
+			};
+			\node[at=(current page.south west),anchor=south west,inner sep=-1pt]{
+				\includegraphics[width=0.8\paperwidth]{MSUfooter.png}
+			};
+			\node[at=(current page.south east),anchor=south east,inner sep=-1pt]{
+				\includegraphics[width=0.18\paperwidth]{nisl-logo.jpg}
+			};
+		\end{tikzpicture}
+    \else%
+            % Other frames background go here.  Currently none.
+    \fi%
+}
+
+% title page
+\defbeamertemplate*{title page}{MSU}[1][]
+{
+  \begin{center}
+    \vspace{0.3in}
+	\usebeamerfont{title}\huge{\bf\inserttitle}\par
+	\vspace{0.05in}
+	\usebeamerfont{subtitle}\Large{\insertsubtitle}\par
+  	\vspace{0.2in}
+	\usebeamerfont{date}\large{\insertdate}\par
+  \end{center}
+  \vspace{0.1in}
+  {\flushright
+	\setbeamercolor{author}{bg=white}
+	\usebeamerfont{author} \Large{\insertauthor}\par
+	\vspace{0.08in}
+	\usebeamerfont{institute}\large{\insertinstitute}\par
+	}
+}
+
+
+\mode<all>
