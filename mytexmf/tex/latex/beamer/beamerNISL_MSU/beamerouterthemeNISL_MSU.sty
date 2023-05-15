@@ -1,18 +1,21 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Montana State University, NISL Template    %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% created by Patrick Donnelly, 2012-2015     %
-% patrick.donnelly2@cs.montana.edu           %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Montana State University, NISL Template   %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% created by Patrick Donnelly, 2012-2015    %
+% patrick.donnelly2@cs.montana.edu          %
+% managed by William Jardee, 2023           %
+% william.jardee@montana.edu                %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \mode<presentation>
+
 
 \setbeamercolor*{lineup}{parent=palette primary}
 \setbeamercolor*{linemid}{parent=palette secondary}
 \setbeamercolor*{linebottom}{parent=palette tertiary}
 
 % Footer
-\defbeamertemplate*{footline}{MSU}
+\defbeamertemplate*{footline}{NISL_MSU}
 {
   \leavevmode%
   \ifnum\c@framenumber=1%
@@ -40,18 +43,17 @@
 		\vbox to2.5ex{\vfil\hbox{\insertframenumber{} / \inserttotalframenumber}\vfil}%
 	\end{beamercolorbox}
 
-	}%
-%
-%  
-%	\vskip-12.5ex%	
-%	
-%  	\llap{\includegraphics[height=9ex,clip=true,%
-%	trim=0pt -1pt 0pt 0pt]{./sty/MSUlogoM.png}\hskip-12mm\vspace{-8ex}}%  	
-%	
-%	\llap{\includegraphics[height=8ex,clip=true,%
-%	trim=0pt -2pt 0pt 0pt]{./sty/nisl-logo-min-small.jpg}\hskip-\paperwidth\vspace{3.5ex}}%    
-  
-   \fi  
+	}
+	\if@logos
+	\vskip-12.5ex%	
+	
+ 	\llap{\includegraphics[height=9ex,clip=true,%
+	trim=0pt -1pt 0pt 0pt]{MSUlogoM.png}\hskip-12mm\vspace{-8ex}}%  	
+	
+	\llap{\includegraphics[height=8ex,clip=true,%
+	trim=0pt -2pt 0pt 0pt]{nisl-logo-min-small.jpg}\hskip-\paperwidth\vspace{3.5ex}}%    
+	\fi
+   	\fi  
 }
 
 \mode
