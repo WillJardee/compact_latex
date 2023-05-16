@@ -1,8 +1,11 @@
 # ignore ALL of these types of files
 *.log
 *.aux
-*.synctex.gz
+*.synctex*
 *.out
+*.fdb*
+*.nav
+*.snm
 
 *.bbl
 *.blg
