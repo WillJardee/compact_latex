@@ -14,6 +14,11 @@
 
 % Requirement
 \RequirePackage{tikz}
+\RequirePackage{geometry}
+
+
+\hfuzz = 100pt
+
 
 % declare logo mode to add logos to every slide
 \newif\if@logos\@logosfalse
@@ -25,8 +30,8 @@
 \ProcessOptions\relax
 
 %Settings
-\usepackage{beamerouterthemeNISL_MSU}
 \usepackage{beamercolorthemeNISL_MSU}
+\usepackage{beamerouterthemeNISL_MSU}
 \usepackage{beamerinnerthemeNISL_MSU}
 
 \setbeamertemplate{navigation symbols}{}
