@@ -6,6 +6,8 @@
 *.fdb*
 *.nav
 *.snm
+*.fls 
+*.toc
 
 *.bbl
 *.blg
