@@ -1,0 +1,89 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Example Journal of Machine Learning Paper                                  %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Created by William Jardee, 2023                 william.jardee@montana.edu %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Uses the jmlr2e.sty file.                                                  %
+%     ../mytexmf/tex/latex/jmlr/jmlr2e.sty                                   %
+% https://github.com/JmlrOrg/jmlr-style-file                                 %
+% Takes the inputs of                                                        %
+%     abbrvbib:   use abbrvnat for the bibliography style                    %
+%     nohyperref: do not load the hyperref package                           %
+%     preprint:   remove JMLR specific information from the template         %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[11pt]{article}
+\usepackage[preprint]{jmlr2e}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Add imported packages below. jmlr2e.sty imports, by default:               %
+%     amssymb                                                                %
+%     epsfig, graphicx                                                       %
+%     hyperref (if nousehyper not passed)                                    %
+%     natbib                                                                 %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Generally used packages
+\usepackage{amsmath, mathtools} 
+\usepackage{tabulary, multirow, enumitem}
+\usepackage{cleveref}
+
+
+\graphicspath{ {./images} }    
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Building the title and headings                                            %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Not needed for preprints
+%% Heading arguments are {volume}{year}{pages}{submitted}{published}{author-full-names}
+% \jmlrheading{23}{2022}{1-\pageref{LastPage}}{1/21; Revised 5/22}{9/22}{21-0000}{Author One and Author Two}
+\ShortHeadings{Your Title; {\sl possibly abbreviated}}{Lname1, Lname2}
+\firstpageno{1}
+
+\begin{document}
+\title{Your Title}
+
+\author{\name Fname1 Lname1 \email example1@uni.edu \\
+       \addr My Deptment1,\\
+       My College1\\
+       City1/State1/Country1
+       \AND
+       \name Fname2 Lname2 \email example2@uni.edu \\
+       \addr My Deptment2,\\
+       My College2\\
+       City2/State2/Country2
+       }
+%% Not needed for preprints
+% \editor{My editor}
+
+\maketitle
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{abstract}
+
+\end{abstract}
+
+\section{Introduction}
+\label{sec:Introduction}
+
+
+\section{Background}
+\label{sec:Background}
+
+
+\section{Methods and Results}
+\label{sec:Methods}
+
+
+\section{Conclusion}
+\label{sec:Conclusion}
+
+
+\section{Future Work}
+\label{sec:FutureWork}
+
+\acks{}
+
+\end{document}
+

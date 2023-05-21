@@ -1,0 +1,94 @@
+\documentclass[10pt]{article}
+
+\usepackage[english]{babel}
+\usepackage[margin=0.8in]{geometry}         % Smaller Margins
+
+% Math/Greek packages
+\usepackage{amssymb, amsmath, amsthm, mathtools} 
+\usepackage{algorithm, algorithmic}     % For pseudocode blocks
+\usepackage{physics}        % If you are in a theory field, this will be your best friend.
+
+% Graphics/Presentation packages
+\usepackage{multirow, tabulary}     % Pretty tables
+\usepackage{graphicx}
+\usepackage{cancel}                 % Lets you scratch out variables 
+\usepackage{enumitem}               % Easy management of enumeration from 1, 2, 3 to a, b, c etc. 
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\usepackage{cleveref}               % Adds prefix to references; i.e., "1" -> "Figure 1"
+
+
+%% Use this line to change the font of your file. If you have the Open Dyslexic v. 1 downloaded (bold-italic- bolditalics included) you can use this line. This font addresses Dyslexic peoples. 
+% \setmainfont{OpenDyslexic}
+%% Use this line to change the font of your file. If you have the Atkinson Hyperlegible downloaded (bold-italic- bolditalics included) you can use this line. This font addresses sight-impared peoples
+% \setmainfont{Atkinson Hyperlegible}
+
+%enumerating: [label=\alph*)], [label=\roman*.], [label=\Roman*.], [label=\roman*., itemsep=0pt, topsep=0pt, start=5]
+%replace "ref" with "cref", "Cref", "crefrange"
+
+
+
+\graphicspath{ {.} }        % Update to where you keep your images
+
+\begin{document}
+
+\title{Course Code: HW \textit{\#}}
+\author{Your name}
+\date{\today}
+\maketitle
+
+
+\section*{Question Title (i.e., ``Griffiths XX.XX'')}
+\begin{quote}
+    This is a very simple layout that I used through the end of my Undergraduate studies. No real flairs and no reliance on importing a specific sty file. I would usually put relevant information from the question in this `quote' block.
+\end{quote}\vspace*{1em}
+
+\begin{enumerate}[label=\alph*)] 
+\item \textit{This is a enumeration using lowercase letters.}
+\end{enumerate}
+
+\clearpage          % Using "clearpage" instead of "newpage" forces images before the page break
+%--------------------------------------------------------------------------------
+
+\section*{Question Title}
+
+\begin{quote}
+    This is an exerpt taken from one of my Intro to Quantum Mechanics courses (Introduction to Quantum Mechnaics by David J. Griffiths question 11.13 - \textit{I do not remember if this was correct}). The purpose of this is to show how to format math in a quick and straitforward way; not so much to a new readers but within your own workflow.
+\end{quote}\vspace*{1em}
+
+A lot of the analysis for this one mirrors what we have already done in the first question. From that conversation we can copy that $\displaystyle{\bra{1 0 0 } z \ket{2 1 0} = \frac{2^8 a}{3^5 \sqrt{2}}}$. We also noticed that the equations were even in $x$ and $y$ for all of them except $\ket{2 1 \pm 1}$. This is the only matrix element that we still need to calculate.
+
+\begin{align*}
+    \bra{1 0 0} x \ket{2 1 \pm 1} 
+        & = \int \frac{1}{\sqrt{\pi a^3}}\frac{\mp 1}{\sqrt{64\pi a^3}}e^{-r/a}\frac{r}{a}e^{-r/2a}\sin(\theta)e^{\pm i \phi} x\dd{V}\\
+        & = \frac{\mp 1}{8\pi a^4}\left[4!\left(\frac{2a}{3}\right)^5\right]\frac{4\pi}{3} = \mp \frac{2^7}{3^5}a \, ,\\
+    \bra{1 0 0} y \ket{2 1 \pm 1} 
+        & = \int \frac{1}{\sqrt{\pi a^3}}\frac{\mp 1}{\sqrt{64\pi a^3}}e^{-r/a}\frac{r}{a}e^{-r/2a}\sin(\theta)e^{\pm i \phi} y\dd{V}\\
+        & = \frac{\mp 1}{8\pi a^4}\left[4!\left(\frac{2a}{3}\right)^5\right]\frac{4\pi}{3}(\pm i) = -i \frac{2^7}{3^5}a \, .
+\end{align*}
+Putting these all together give that 
+
+\begin{align*}
+    \bra{1 0 0}\vb{r}\ket{2 0 0} & = 0 \, , 
+        & \bra{1 0 0}\vb{r}\ket{2 1 0} & =\frac{2^8 a}{3^5 \sqrt{2}}\hat{z} 
+        & \bra{1 0 0}\vb{r}\ket{2 1 \pm 1} & = \frac{2^7}{3^5}a(\mp \hat{x} - i \hat{y}) \, , \\
+    \bra{1 0 0}\vb{r}\ket{2 0 0} & \rightarrow \abs{\mathcal{P}}^2 = 0 
+        & \bra{1 0 0}\vb{r}\ket{2 1 0} & \rightarrow \abs{\mathcal{P}}^2 = (qa)^2\frac{2^{15}}{3^{10}}  
+        & \bra{1 0 0}\vb{r}\ket{2 0 0} & \rightarrow \abs{\mathcal{P}}^2 = (qa)^2\frac{2^{15}}{3^{10}} \, .
+\end{align*}
+
+We are given that 
+$\displaystyle{A = \frac{\omega^3 \abs{\mathcal{P}}^2}{3\pi \varepsilon_0 \hbar c^3}}$, 
+and 
+$\displaystyle{\omega = \frac{E_2-E_1}{\hbar} = -\frac{3}{4\hbar}E_1}$. 
+So, for all the states where $\mathcal{P}\neq 0$:
+
+\begin{align*}
+    A & = -\frac{3^3}{2^6}\frac{E_1^3}{\hbar^3}\frac{(ea)^2 2^{15}}{3^{10}}\frac{1}{3\pi\varepsilon_0 \hbar c^3} \rightarrow 6.27\times 10^8 \text{s}^{-1} \, ,
+\end{align*}
+
+\[\boxed{\tau = \frac{1}{A} \approx 1.60\times 10^{-9} \text{s}} \, .\qquad \checkmark\]
+
+Obviously, the $\ket{2 0 0 }$ state never has the opportunity to transition, so the lifetime is $\tau \rightarrow \infty$. 
+
+
+\end{document}

@@ -88,13 +88,15 @@
 
 
 % ... for labeling pages with HW/problem numbers
-\newcommand{\hwnum}{TODO}
+% \newcommand{\hwnum}{TODO}
+\newcommand{\hwnum}[1]{\def\@hwnum{#1}}
+\newcommand{\gethwnum}{\@hwnum}
 \newcounter{probnum}
 \newcommand{\nextprob}[1]{
     \stepcounter{probnum}
     \ifthenelse{\boolean{coverpage} \AND \value{probnum}<2}{\clearpage}{} 
     \ifthenelse{\boolean{newpage} \AND \value{probnum}>1}{\clearpage}{} 
-    \problem{\hwnum-\arabic{probnum}}
+    \problem{\@hwnum-\arabic{probnum}}
     \header{#1}
 }
 
