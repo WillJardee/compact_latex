@@ -10,9 +10,35 @@ You only want to register the `mytexmf` folder.
 ## Adding to Texlive
 This is going to depend on your device specific distribution tree. A good guide 
 can be found through the [Arch Linux wiki](wiki.archlinux.org/title/TeX_Live). 
-I personally created a user specific tex directory at '~/texmf' and copied the
-'compact\_latex/mytexmf/tex/' into '~/texmf/tex/'. This can be done with
-'''cp compact\_latex/mytexmf/tex ~/texmf/'''
+
+There are a couple different ways you can do this. 
+- The first would be to copy all compact_latex directly into the texmf dir. 
+  This approach is good if you do not update often or if you are trying things. 
+  ```
+  mkdir -p ~/texmf/tex/latex/compact_latex
+  cp <path to the repo>/texmf/tex/latex/* ~/texmf/tex/latex/compact_latex/*
+  ```
+- The second would be to create symbolic link to the repo. This choice allows 
+  `git pull` to update the repo and update your tex path.
+  ```
+  mkdir -p ~/texmf/tex/latex/
+  ln -s <path to the repo>/texmf/tex/latex/ ~/texmf/tex/latex/compact_latex
+  ```
+  This creates a (soft) symbolic link from the github repo to compact_latex. 
+  Beware that if you move the repo, you will likely have to update where the 
+  symbolic links to. The easiest way to do this is to remove the link
+  ```
+  rm ~/texmf/tex/latex/compact_latex
+  ```
+  then update it with the same process as you did the first time.
+- The third way is good if you want to rip only a single file for a project. 
+  Navigate to the .sty you wish to use from 
+  `<path to the repo>/texmf/tex/latex/` and copy it to the current working dir
+  of your tex project.
+ 
+ 
+The best solution I currently have for Overleaf is to take the third strategy 
+  and copy it into the highest level directory of the Overleaf project.
 
 ## TODO:
 
