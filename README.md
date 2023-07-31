@@ -7,6 +7,13 @@ must be registered. If you are using MikTex, as I do, you need to [register it
 through the console](https://tex.stackexchange.com/questions/1137/where-do-i-place-my-own-sty-or-cls-files-to-make-them-available-to-all-my-te).
 You only want to register the `mytexmf` folder.
 
+## Adding to Texlive
+This is going to depend on your device specific distribution tree. A good guide 
+can be found through the [Arch Linux wiki](wiki.archlinux.org/title/TeX_Live). 
+I personally created a user specific tex directory at '~/texmf' and copied the
+'compact\_latex/mytexmf/tex/' into '~/texmf/tex/'. This can be done with
+'''cp compact\_latex/mytexmf/tex ~/texmf/'''
+
 ## TODO:
 
 - [ ] Add Makefile direction
