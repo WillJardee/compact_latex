@@ -1,10 +1,11 @@
-# Compact Latex
+## Compact Latex
 Collection of starter sty, cls, tex, and bib examples.
 
 ## Adding to MikTex
 Most of these styles should be usable out of the box. The TEXMF root directory
-must be registered. If you are using MikTex, as I do, you need to [register it
-through the console](https://tex.stackexchange.com/questions/1137/where-do-i-place-my-own-sty-or-cls-files-to-make-them-available-to-all-my-te).
+must be registered. If you are using MikTex, as I do on my Windows machine, you
+need to [register it through the
+console](https://tex.stackexchange.com/questions/1137/where-do-i-place-my-own-sty-or-cls-files-to-make-them-available-to-all-my-te).
 You only want to register the `mytexmf` folder.
 
 ## Adding to Texlive
@@ -24,7 +25,7 @@ There are a couple different ways you can do this.
   mkdir -p ~/texmf/tex/latex/
   ln -s <path to the repo>/texmf/tex/latex/ ~/texmf/tex/latex/compact_latex
   ```
-  This creates a (soft) symbolic link from the github repo to compact_latex. 
+  This creates a (soft) symbolic link from the GitHub repo to compact_latex. 
   Beware that if you move the repo, you will likely have to update where the 
   symbolic links to. The easiest way to do this is to remove the link
   ```
@@ -45,9 +46,12 @@ The best solution I currently have for Overleaf is to take the third strategy
 - [ ] Add Makefile direction
 - [ ] Add Overleaf directions
 - [ ] Add external links
-- [ ] Add cheat sheets
+  - [List of LaTeX mathematical symbols](https://oeis.org/wiki/List_of_LaTeX_mathematical_symbols)
+  - [Latex Tutorial](https://latex-tutorial.com/)
+  - [A Not so Short Introduction to Latex](https://tobi.oetiker.ch/lshort/lshort.pdf)
 - [ ] Add comprehensive "Get Latex Running" section
 - [ ] Add math examples
 - [ ] Scour the internet for more styles
 - [ ] Add poster examples
+  - [ ] [Better Poster](https://github.com/rafaelbailo/betterposter-latex-template)
 - [ ] Develop file hierarchy visual
