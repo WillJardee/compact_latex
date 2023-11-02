@@ -9,16 +9,31 @@
 % Takes the input of 'logos'                % 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% See https://www.montana.edu/brandtoolkit/ for MSU guidlines
-
 \mode<presentation>
+
+\typeout{Document Style `MSU'.}
+
 
 % Requirement
 \RequirePackage{tikz}
+\RequirePackage{geometry}
+% \RequirePackage{svg}
 
-% Settings
-\usepackage{beamerouterthemeMSU}
+\hfuzz = 100pt
+
+
+% declare logo mode to add logos to every slide
+\newif\if@logos\@logosfalse
+\DeclareOption{logos}{
+  \@logostrue
+}
+
+\DeclareOption*{\PackageWarning{MSU}{Unknown ‘\CurrentOption’}}
+\ProcessOptions\relax
+
+%Settings
 \usepackage{beamercolorthemeMSU}
+\usepackage{beamerouterthemeMSU}
 \usepackage{beamerinnerthemeMSU}
 
 \setbeamertemplate{navigation symbols}{}

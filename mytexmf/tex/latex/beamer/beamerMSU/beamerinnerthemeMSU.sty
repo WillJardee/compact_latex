@@ -49,18 +49,16 @@
 {
     \ifnum\c@framenumber=1%
 		\begin{tikzpicture}
-			\begin{tikzpicture}
-				\clip (0,0) rectangle (\paperwidth, \paperheight);
-				\fill[msublue] (0,0) rectangle (\paperwidth, \paperheight);
-				\fill[msugrey] (0.5\paperwidth, -2.1\paperheight) circle (3\paperheight);
-				\fill[white] (0.5\paperwidth, -2.1075\paperheight) circle (3\paperheight);
-	
-				\fill[msugold] (.23\paperwidth, -1.8\paperheight) circle (1.972\paperheight);
-				\fill[msublue] (.2\paperwidth, -1.8\paperheight) circle (1.972\paperheight);
-				\node[at=(current page.south west),anchor=south west,inner sep=7pt]{
-					\includegraphics[width=0.25\paperwidth]{MSUlogoV.png}
-				};
-			\end{tikzpicture}
+			\clip (0,0) rectangle (\paperwidth, \paperheight);
+			\fill[msublue] (0,0) rectangle (\paperwidth, \paperheight);
+			\fill[msugrey] (0.5\paperwidth, -2.1\paperheight) circle (3\paperheight);
+			\fill[white] (0.5\paperwidth, -2.1075\paperheight) circle (3\paperheight);
+
+			\fill[msugold] (.23\paperwidth, -1.8\paperheight) circle (1.972\paperheight);
+			\fill[msublue] (.2\paperwidth, -1.8\paperheight) circle (1.972\paperheight);
+			\node[at=(current page.south west),anchor=south west,inner sep=7pt]{
+				\includegraphics[width=0.25\paperwidth]{MSUlogoV.png}
+			};
 		\end{tikzpicture}
     \else%
             % Other frames background go here.  Currently none.

@@ -43,7 +43,7 @@ The best solution I currently have for Overleaf is to take the third strategy
 
 ## TODO:
 
-- [ ] Add Makefile direction
+- [X] Add Makefile direction
 - [ ] Add Overleaf directions
 - [ ] Add external links
   - [List of LaTeX mathematical symbols](https://oeis.org/wiki/List_of_LaTeX_mathematical_symbols)
@@ -55,3 +55,7 @@ The best solution I currently have for Overleaf is to take the third strategy
 - [ ] Add poster examples
   - [ ] [Better Poster](https://github.com/rafaelbailo/betterposter-latex-template)
 - [ ] Develop file hierarchy visual
+
+## LATEX notes
+- add `\tracinglostchars=3` to preamble
+- `draft` toggle to document

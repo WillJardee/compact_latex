@@ -6,8 +6,8 @@
 % managed by William Jardee, 2023           %
 % william.jardee@montana.edu                %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 \mode<presentation>
+
 
 \setbeamercolor*{lineup}{parent=palette primary}
 \setbeamercolor*{linemid}{parent=palette secondary}
@@ -43,7 +43,17 @@
 	\end{beamercolorbox}
 
 	}
-  \fi  
+	\if@logos
+	\vskip-12.5ex%	
+	
+ 	\llap{\includegraphics[height=9ex,clip=true,%
+	trim=0pt -1pt 0pt 0pt]{MSUlogoM.png}\hskip-12mm\vspace{-8ex}}%  	
+	
+	%\llap{\includegraphics[height=8ex,clip=true,%
+	%trim=0pt -2pt 0pt 0pt]{nisl-logo-min-small}\hskip-\paperwidth\vspace{3.5ex}}%    
+        %\llap{\includegraphics[height=8ex]{nisl-logo-min-small}\hskip-\paperwidth\vspace{3.5ex}}%    
+	\fi
+   	\fi  
 }
 
 \mode
