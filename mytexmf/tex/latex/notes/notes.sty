@@ -1,0 +1,60 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Notes style sheet for my own personal use
+% Created by Will Jardee
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\def\fileversion{0.1}
+\def\filedate{2024/01/29}
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{notes}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Provides: 
+%   Packages: geometry, hyperref, xcolor, framed
+%   Environments: Notes, Question, Investigate, defintion, important
+%   Operators: prob, expect, var, cov, corr, argmin, argmax
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Formatting the paper and links
+\usepackage[margin=1in]{geometry}
+\usepackage[colorlinks=true, allcolors=gray]{hyperref}  % I don't like cyan links in notes
+
+% Macros for telling what to go back to
+\usepackage[dvipsnames]{xcolor}
+\newcommand{\Note}[1]{\textcolor{blue}{\\\noindent\textbf{Note:} #1}}
+\newcommand{\Question}[1]{\textcolor{red}{\\\noindent\textbf{Question:} #1}}
+\newcommand{\Investigate}[1]{\textcolor{violet}{\\\noindent\textbf{Investigate:} #1}}
+
+% Allow for redefining sections for when classes go over book`s out of order
+\newcommand{\mysection}[2]{\setcounter{section}{#1}\addtocounter{section}{-1}\section{#2}}
+\newcommand{\mysubsection}[2]{\setcounter{subsection}{#1}\addtocounter{subsection}{-1}\subsection{#2}}
+\newcommand{\mysubsubsection}[2]{\setcounter{subsubsection}{#1}\addtocounter{subsubsection}{-1}\subsubsection{#2}}
+
+% Define Commonly used Operators
+\usepackage{amsmath}
+\DeclareMathOperator*{\prob}{\mathbb{P}}
+\DeclareMathOperator*{\expect}{\mathbb{E}}
+\DeclareMathOperator*{\var}{Var}
+\DeclareMathOperator*{\cov}{Cov}
+\DeclareMathOperator*{\corr}{Corr}
+\DeclareMathOperator*{\argmax}{argmax}
+\DeclareMathOperator*{\argmin}{argmin}
+
+% Provide block formats for definitions/important things
+% TODO: Add a figure-esk way of tracking nubmers
+\usepackage{framed}
+\colorlet{shadecolor}{orange!15}
+
+% Empty white spaces need to enforce new line
+\newenvironment{definition}[2][$\langle$No Reference$\rangle$]{
+  \begin{leftbar}
+    \textbf{#2} - #1
+
+\noindent
+}{
+  \end{leftbar}}
+
+\newenvironment{important}[2][$\langle$No Reference$\rangle$]{
+  \begin{shaded}
+    \textbf{#2} - #1
+
+\noindent
+}{\end{shaded}}

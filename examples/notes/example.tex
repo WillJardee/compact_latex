@@ -1,0 +1,55 @@
+\documentclass[letterpaper, 10pt]{article}
+\usepackage{notes}
+
+
+\title{Notes for an Example Topic Concepts}
+\author{Your Name}
+\date{Last day compiled: \today}
+
+% \usepackage[style=draft]{biblatex}
+% \addbibresource{./ethics.bib}
+\usepackage{graphicx}
+\graphicspath{ {./images/} }
+
+\usepackage{amsfonts,amsmath,mathrsfs,bm}
+\usepackage{cleveref}
+
+
+\begin{document}
+\maketitle
+\tableofcontents
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\mysection{9}{example section}
+\mysubsection{7}{example subsection}
+\mysubsubsection{0}{example subsubsection}
+
+
+\begin{definition}[Reference; supports citations]{Definition}
+    Example of a definition
+\end{definition}
+
+\mysection{7}{example section}
+
+\begin{important}[Reference]{Important}
+    Includes some simple math operators that I find useful (and unifies the notation):
+    \begin{align*}
+        & \prob_{\tau \sim T}\left[x^2\right] &  
+        \expect_{\tau \sim T}\left[x^2\right] \\
+        & \cov_{\tau \sim T}\left[x^2\right] & 
+        \corr_{\tau \sim T}\left[x^2\right] \\
+        & \argmin_{\tau \sim T}\left[x^2\right] &
+        \argmax_{\tau \sim T}\left[x^2\right]
+    \end{align*}
+\end{important}
+
+\section{next section}
+
+\Note{Example Note}
+\Question{Example Question}
+\Investigate{Example Investigate}
+
+% \printbibliography
+
+\end{document}
