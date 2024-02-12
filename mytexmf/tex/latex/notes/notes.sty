@@ -19,14 +19,17 @@
 
 % Macros for telling what to go back to
 \usepackage[dvipsnames]{xcolor}
+% \newcommand{\TODO}[1]{\textcolor{red}{\\\noindent\textbf{TODO:} #1}}
 \newcommand{\Note}[1]{\textcolor{blue}{\\\noindent\textbf{Note:} #1}}
-\newcommand{\Question}[1]{\textcolor{red}{\\\noindent\textbf{Question:} #1}}
+\newcommand{\Question}[1]{\textcolor{magenta}{\\\noindent\textbf{Question:} #1}}
 \newcommand{\Investigate}[1]{\textcolor{violet}{\\\noindent\textbf{Investigate:} #1}}
 
 % Allow for redefining sections for when classes go over book`s out of order
 \newcommand{\mysection}[2]{\setcounter{section}{#1}\addtocounter{section}{-1}\section{#2}}
 \newcommand{\mysubsection}[2]{\setcounter{subsection}{#1}\addtocounter{subsection}{-1}\subsection{#2}}
 \newcommand{\mysubsubsection}[2]{\setcounter{subsubsection}{#1}\addtocounter{subsubsection}{-1}\subsubsection{#2}}
+\newcommand{\mypart}[2]{\setcounter{part}{#1}\addtocounter{part}{-1}\part{#2}}
+
 
 % Define Commonly used Operators
 \usepackage{amsmath}
@@ -41,7 +44,7 @@
 % Provide block formats for definitions/important things
 % TODO: Add a figure-esk way of tracking nubmers
 \usepackage{framed}
-\colorlet{shadecolor}{orange!15}
+
 
 % Empty white spaces need to enforce new line
 \newenvironment{definition}[2][$\langle$No Reference$\rangle$]{
@@ -53,8 +56,24 @@
   \end{leftbar}}
 
 \newenvironment{important}[2][$\langle$No Reference$\rangle$]{
+  \colorlet{shadecolor}{orange!15}
   \begin{shaded}
     \textbf{#2} - #1
 
 \noindent
 }{\end{shaded}}
+
+
+\newcommand{\TODO}[1]{
+  \hfuzz 1.1in
+
+  \noindent \hspace{-.5in}
+  \begin{minipage}{\dimexpr\linewidth+1in\relax}
+  \colorlet{shadecolor}{red!55}
+  \begin{shaded}
+    \textbf{#1}
+  \end{shaded}
+  \end{minipage}%
+
+  \hfuzz 0.1pt
+}
