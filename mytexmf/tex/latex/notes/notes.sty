@@ -63,7 +63,10 @@
 \noindent
 }{\end{shaded}}
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> b5188ba (added todo)
 \newcommand{\TODO}[1]{
   \hfuzz 1.1in
 
@@ -77,3 +80,18 @@
 
   \hfuzz 0.1pt
 }
+<<<<<<< HEAD
+=======
+
+% to-do list env
+\usepackage{amssymb, enumitem}
+\newlist{todolist}{itemize}{2}
+\setlist[todolist]{label=$\square$}
+\usepackage{pifont}
+\newcommand{\cmark}{\ding{51}}%
+\newcommand{\xmark}{\ding{55}}%
+\newcommand{\done}{\rlap{$\square$}{\raisebox{2pt}{\large\hspace{1pt}\cmark}}%
+\hspace{-2.5pt}}
+\newcommand{\wontfix}{\rlap{$\square$}{\large\hspace{1pt}\xmark}}
+
+>>>>>>> b5188ba (added todo)
