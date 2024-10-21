@@ -1,7 +1,5 @@
-# ignore ALL of these types of files
+*.loa
 *.aux
-*.bbl
-*.blg
 *.glo
 *.idx
 *.log
@@ -17,18 +15,14 @@
 *.gls
 *.ilg
 *.ind
-*.loa
 *.lof
 *.lot
 *.maf
 *.mtc
 *.mtc1
-*.nav
 *.out
-*.synctex*
-*.snm
-*.fdb*
-*.toc
+*.synctex.gz
+*.fdb_latexmk
 *.fls
 *eps-converted-to.pdf
 *.pdn
