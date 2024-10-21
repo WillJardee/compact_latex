@@ -10,13 +10,22 @@
 % Takes the inputs of                                                        %
 %     logos: Adds MSU logos for each slide                                   %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\documentclass[aspectratio=169]{beamer}
-%% Uses general MSU beamer style
-\usetheme[logos]{MSU}
-%% Uses NISL MSU beamer style
-% \usetheme[logos]{NISL_MSU}
+% Before you ask, changing the aspect ratio in the style file is complicated.
+% It is better to give you the control over it.
+\documentclass[aspectratio=169]{beamer} % add `handout' to options to flatten for students/printing
 
+% \usetheme[logos]{MSU}
+\usetheme[logos]{NISL_MSU} % Using MSU theme for no NISL logo; use logos to add logos
+
+% this tells us where to find all the graphics
 \graphicspath{ {./images/} }
+
+% This uses biblatex to compile our bibliography.
+% You might have to install this.
+% It can also break if you use natbib at all (I'm looking at you JMLR)
+\usepackage{biblatex}
+\addbibresource{ref.bib} % This file is the bib.tex that we are using
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Add imported packages below. MSU/NISL_MSU imports, by default:             %
@@ -45,11 +54,10 @@
 \begin{document}
 
 \begin{frame}
-	\titlepage
+	\titlepage{}
 \end{frame}
 
-\begin{frame}
-	\frametitle{Table of Contents}
+\begin{frame}{Table of Contents}
 	\tableofcontents
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -62,22 +70,27 @@
 \begin{frame}
 	\frametitle{Title}
 
+    \begin{itemize}
+    \end{itemize}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
-	\frametitle{Title}
-
+\begin{frame}{Title}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Main Content																 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Example Section II}
-\begin{frame}
-	\frametitle{Title}
-
+\begin{frame}{Title}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% References
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[allowframebreaks]{References}
+  \nocite{*}
+  \printbibliography{}
+\end{frame}
 
 \end{document}
