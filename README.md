@@ -9,36 +9,35 @@ console](https://tex.stackexchange.com/questions/1137/where-do-i-place-my-own-st
 You only want to register the `mytexmf` folder.
 
 ## Adding to Texlive
-This is going to depend on your device specific distribution tree. A good guide 
-can be found through the [Arch Linux wiki](wiki.archlinux.org/title/TeX_Live). 
+This is going to depend on your device specific distribution tree. A good guide
+can be found through the [Arch Linux wiki](wiki.archlinux.org/title/TeX_Live),
+and a ton of information can be gathered both from [TEX
+FAQ](https://texfaq.org/) and [Reddit](https://www.reddit.com/r/LaTeX/). 
 
-There are a couple different ways you can do this. 
-- The first would be to copy all compact_latex directly into the texmf dir. 
-  This approach is good if you do not update often or if you are trying things. 
-  ```
-  mkdir -p ~/texmf/tex/latex/compact_latex
-  cp <path to the repo>/texmf/tex/latex/* ~/texmf/tex/latex/compact_latex/*
-  ```
-- The second would be to create symbolic link to the repo. This choice allows 
-  `git pull` to update the repo and update your tex path.
-  ```
-  mkdir -p ~/texmf/tex/latex/
-  ln -s <path to the repo>/texmf/tex/latex/ ~/texmf/tex/latex/compact_latex
-  ```
-  This creates a (soft) symbolic link from the GitHub repo to compact_latex. 
-  Beware that if you move the repo, you will likely have to update where the 
-  symbolic links to. The easiest way to do this is to remove the link
-  ```
-  rm ~/texmf/tex/latex/compact_latex
-  ```
-  then update it with the same process as you did the first time.
-- The third way is good if you want to rip only a single file for a project. 
-  Navigate to the .sty you wish to use from 
-  `<path to the repo>/texmf/tex/latex/` and copy it to the current working dir
-  of your tex project.
- 
- 
-The best solution I currently have for Overleaf is to take the third strategy 
+To get TeXLive to recognize your `.sty` file, you need to put them onto the path it searches. You can test for where that is with 
+```sh
+kpewhich -var-value TEXMFLOCAL
+```
+for system wide install and 
+```sh
+kpewhich -var-value TEXMFHOME
+```
+for user specific files. If these are not defined, you might need to manipulate your [variables](https://wiki.archlinux.org/title/TeX_Live#texmf_trees_and_Kpathsea) (I prefer to use [XDG Base Directories](https://wiki.archlinux.org/title/XDG_Base_Directory)).
+
+As long as the files end up in this path, you're fine. You can copy the files
+directly into this base directory or subdirectory, clone this repository
+directly into this directory, or symlink it in. I personally prefer the last
+option.
+1. Clone this repo into somewhere convenient for you.
+1. Link all the files into `TEXMFHOME`
+```sh 
+mkdir -p $TEXMFHOME/texmf/latex
+ln -s /path/to/compact_latex/mytexmf/tex/latex/* $TEXMFHOME/texmf/latex/
+```
+
+If you only care about one project, you might want to copy the raw files over. The current directory should be added to the search path. So, if you copy the `.sty` file or directory into the working directory it should find it. 
+
+The best solution I currently have for Overleaf is to take the last strategy 
   and copy it into the highest level directory of the Overleaf project.
 
 ## TODO:
