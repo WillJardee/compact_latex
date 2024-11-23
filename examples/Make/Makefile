@@ -13,7 +13,12 @@ OPT_PDF_FILES := $(patsubst %.pdf,%_optimized.pdf,$(BUILD_PDF_FILES))
 # EPUB_FILES := $(patsubst %.tex,%.epub,$(TEX_FILES))
 
 # Directory containing image files
-IMG_DIR := images
+IMG_DIR ?= images/
+
+SRC_DIRS := $(shell find ./* -type d | grep -v -e "^./$(BUILD_DIR)" -e "build")
+# TEXINPUTS_VAR := $(patsubst  ./%,$(BUILD_DIR)/%:,$(SRC_DIRS))$(BUILD_DIR):
+# TEXINPUTS_VAR := $(shell echo $(TEXINPUTS_VAR) | sed 's/[[:space:]]//g')
+TEXINPUTS_VAR:=.:$(BUILD_DIR)//:
 
 # Find all SVG and EPS files in the images directory
 SVG_FILES := $(wildcard $(IMG_DIR)/*.svg)
@@ -27,7 +32,7 @@ INKSCAPE_INSTALLED := $(shell command -v inkscape >/dev/null 2>&1 && echo yes ||
 EPSTOPDF_INSTALLED := $(shell command -v epspdf >/dev/null 2>&1 && echo yes || echo no)
 GS_INSTALLED := $(shell command -v gs >/dev/null 2>&1 && echo yes || echo no)
 
-TEMP_EXT := aux log out toc lof lot fls fdb_latexmk synctex.gz nav snm vrb bbl blg xdv run.xml acn acr alg idx ilg ind tmp makefile
+TEMP_EXT := aux log out toc lof lot fls fdb_latexmk synctex.gz nav snm vrb bbl blg bcf xdv run.xml acn acr alg idx ilg ind tmp makefile SAVE-ERROR
 
 .PHONY: all clean veryclean check-dependencies pdf
 
@@ -69,7 +74,7 @@ epub: prod $(EPUB_FILES)
 clean:
 	@if [ -d "$(BUILD_DIR)" ]; then \
 		for ext in $(TEMP_EXT); do \
-			find $(BUILD_DIR) -type f -name "*.$$ext" -delete; \
+			find $(BUILD_DIR) -type f -name "*$$ext" -delete; \
 		done; \
 		echo "Build files cleaned."; \
 	else \
@@ -131,13 +136,23 @@ define check_tool_simple
 	fi
 endef
 
+
+# Function: Sync directories into BUILD_DIR
+sync-dirs:
+	@echo "Syncing directory structure to $(BUILD_DIR)..."
+	@$(foreach dir,$(SRC_DIRS),mkdir -p $(BUILD_DIR)/$(dir);)
+	@echo "Directory structure synced."
+	@echo "TEXINPUTS=$(TEXINPUTS_VAR)"
+	@echo "SRC_DIRS=$(SRC_DIRS)"
+
+
 # Rule for SVG to PDF conversion
-%.pdf: %.svg
+%.pdf: $(IMG_DIR)/%.svg
 	@echo "Converting $< to $@"
 	@if [ "$(INKSCAPE_INSTALLED)" = "yes" ]; then \
-		inkscape --export-filename=$@ $< ; \
+		inkscape --export-filename=$(BUILD_DIR)/$(IMG_DIR)/$@ $< ; \
 	elif [ "$(IMAGEMAGICK_INSTALLED)" = "yes" ]; then \
-		magick $< $@ ; \
+		magick $< $(BUILD_DIR)/$(IMG_DIR)/$@ ; \
 	else \
 		echo "Error: Neither Inkscape nor ImageMagick is available for SVG conversion." ; \
 		exit 1 ; \
@@ -147,20 +162,21 @@ endef
 %.pdf: %.eps
 	@echo "Converting $< to $@"
 	@if [ "$(EPSTOPDF_INSTALLED)" = "yes" ]; then \
-		epspdf $< ; \
+		epspdf $< $(BUILD_DIR)/$(IMG_DIR)/$@; \
 	elif [ "$(IMAGEMAGICK_INSTALLED)" = "yes" ]; then \
-		magick $< $@ ; \
+		magick $< $(BUILD_DIR)/$(IMG_DIR)/$@ ; \
 	else \
-		echo "Error: Neither epstopdf or ImageMagick is available for EPS conversion." ; \
+		echo "Error: Neither epspdf or ImageMagick is available for EPS conversion." ; \
 		exit 1 ; \
 	fi
 
 # Rule for TEX to PDF conversion
-%.pdf: %.tex
+%.pdf: %.tex sync-dirs
+	# export TEXINPUTS=$(TEXINPUTS_VAR)
 	@if [ "$(LATEX_ENGINE)" = "latexmk" ]; then \
-		latexmk $(LATEX_FLAGS) $< ; \
+		TEXINPUTS=$(TEXINPUTS_VAR) latexmk $(LATEX_FLAGS) $< ; \
 	elif [ "$(LATEX_ENGINE)" = "pdflatex" ]; then \
-		latexmk -pdflatex $(LATEX_FLAGS) $< ; \
+		TEXINPUTS=$(TEXINPUTS_VAR) latexmk -pdflatex $(LATEX_FLAGS) $< ; \
 	elif [ "$(LATEX_ENGINE)" = "lualatex" ]; then \
 		latexmk -lualatex $(LATEX_FLAGS) $< ; \
 	elif [ "$(LATEX_ENGINE)" = "xelatex" ]; then \

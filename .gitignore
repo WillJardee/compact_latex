@@ -32,6 +32,4 @@
 *.fls
 *eps-converted-to.pdf
 *.pdn
-ILASS_Paper_Outline with notes from Nate.pdf
-ILASS_Paper_Outline with notes from Tim.pdf
-ILASS_Paper_Outline with notes from Eric.pdf
+build/
