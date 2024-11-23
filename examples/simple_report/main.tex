@@ -1,0 +1,91 @@
+\documentclass[letterpaper, 10pt]{article}
+\usepackage[margin=1in]{geometry}
+
+% We are using biber as our reference manager
+% Notice that we pass the draft style. This helps with bug checking and a small speed bump
+\usepackage[style=draft]{biblatex}
+\addbibresource{./refs.bib}
+
+\usepackage{graphicx}
+\graphicspath{ {./images/} }
+
+% Some common utility packages
+\usepackage{amsfonts,amsmath,mathrsfs,bm}
+\usepackage{hyperref, cleveref}
+\usepackage{listings}
+
+\usepackage{lipsum}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue,
+  citecolor=red,
+  pdftitle={Latex Examples}
+}
+\urlstyle{same}
+
+\title{Simple Report Example}
+\author{Your Name}
+\date{Last day compiled: \today}
+
+\begin{document}
+\maketitle
+\tableofcontents
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{abstract}
+  \lipsum[2]
+.\end{abstract}
+
+\section{Introduction}%
+\label{sec:Introduction}
+\input{./body/intro}
+% You can also use input, but there is slightly different behavior when it
+% comes to .aux files and automatic linkage - input does a recursive search for
+% input calls, and include does not. You can check out my Makefile for a linux
+% friend automation of creating a build dir for latex (this includes the
+% subdirectories and file transformations
+
+
+\section{References}%
+\label{sec:References}
+Only the refs we cite will appear. Refer to your style to ensure you are using
+the correct conventions (e.g., JMRL uses \verb|\cite| for in-line citations,
+\verb|\citep| gives end-of-line parenthetical citations. It is highly suggested
+to use bibtex and a \verb|.bib| file. The process tacks an external compilation
+loop specifically for references (possibly also dealing with the \verb|ref|
+citations aswell), generated a set of build files, which help speed up
+compilation times.
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=0.5\textwidth]{box_and_icon-purple}
+  \caption{The Science Mentorship Institute logo}
+  \label{fig:scimi}
+\end{figure}
+
+\noindent
+\textbf{One citation}: \cite{texbook}\\
+\textbf{Two ctiations}: \cite{latex:companion, latex2e}\\
+\nocite{knuth:1984}
+% Notice that 'lesk:1977' did not appear in the list or the refs.
+% And we were able to get knuth:1984 without it showing in the paper
+
+\printbibliography
+
+\appendix
+\section{Some Code}%
+\label{sec:Some Code}
+
+\begin{lstlisting}[language=Python]
+import sys
+def main(num: int = 1):
+  for i in num:
+    sys.stdout(i)
+    
+if __name__ == "__main__":
+  main()
+\end{lstlisting}
+
+\end{document}

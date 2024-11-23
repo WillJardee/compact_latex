@@ -1,0 +1,20 @@
+\lipsum[1]
+
+\subsection{Example Subsection}%
+\label{sub:Example Subsection}
+% I like to have all my sections in separate files, to make them easier to
+% manage. Also helps me from getting overwhelmed. I have the section headers in
+% the main.tex file, then subsections in the section files. This also makes it
+% really easy to remove or add sections as need (e.g., abstracts or sets of
+% beamer slides).
+
+You can reference any label with \verb|\ref| for the static section number, or
+you can use the Cleveref package to automatically bring along the label:
+\verb|\cref| gives you lowercase, and \verb|\Cref| gives you capitalized. If
+you have \verb|hyperref| imported, it should also give you an automatic
+hyper-link to the pdf location.
+\begin{center}
+  \Cref{sec:Introduction}
+\end{center}
+
+
